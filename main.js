@@ -65,3 +65,18 @@ const wordsCounter = (paragraph) => {
 };
 
 wordsCounter(paragraph);
+
+const phraseToCheck = 'step on no pets';
+
+const clean = (str) => str.toLowerCase().replace(/[\W_]/g, '');
+
+const isPalindrome = (str) => {
+  const cleanStr = clean(str);
+  const reversedStr = cleanStr.split('').reverse().join('');
+
+  reversedStr === cleanStr ? 
+  console.log(`${cleanStr} it's a palindrome!`) :
+  console.log(`${cleanStr} it's NOT a palindrome!`);
+}
+
+isPalindrome(phraseToCheck);
