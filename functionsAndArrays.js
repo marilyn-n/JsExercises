@@ -1,4 +1,4 @@
-const words = ['mystery', 'brother', 'aviator', 'crocodile', 'mystery', 'pearl', 'orchard', 'orchard', 'crackpot'];
+const words = ['mystery', 'brother', 'aviator', 'crocodile', 'mystery', 'pearl', 'orchard', 'crackpot', 'orchard'];
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 // Iteration #1: Find the maximum
 // Define a function maxOfTwoNumbers that takes two numbers as arguments and returns the largest.
@@ -55,19 +55,16 @@ console.log(`The average length of array of words is ${averageWordLength(words).
 
 // return an unique array of words
 
-// const uniqueArr = (w) => {
-//   let uniqueWords = [];
-//   w.map(word => {
-//     if (uniqueWords.indexOf(word) < 0) {
-//       uniqueWords.push(word);
-//     } else {
-//       uniqueWords.unshift(word);
-//     console.log(uniqueWords);
-
-//     }
-//   })
-
+const uniqueArr = (w) => {
+  let uniqueWords = [];
   
-// }
+  w.map(word => {
+    if (uniqueWords.indexOf(word) === -1) {
+      uniqueWords.push(word);
+    }
+  })
+  
+  return uniqueWords
+}
 
-// console.log(`unique words ${uniqueArr(words)}`);
+console.log(`unique words ${uniqueArr(words)}`);
