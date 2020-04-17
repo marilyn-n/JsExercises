@@ -68,3 +68,28 @@ const uniqueArr = (w) => {
 }
 
 console.log(`unique words ${uniqueArr(words)}`);
+
+const doesWordExist = (w, searchTerm) => {
+  if (w.includes(searchTerm)) {
+    console.log(`${searchTerm} exists in the words array!`);
+  } else {
+    console.log(`${searchTerm} is not in the words array!`);
+  }
+}
+
+console.log(doesWordExist(words, 'orchard'));
+
+
+const howManyTimes = (arr, searchTerm) => {
+  let times = 0
+
+  const ok = arr.map(word => {
+    if (word === searchTerm) {
+      time++;
+      return `${word} ${times}`
+    }
+  })
+return  ok
+}
+
+console.log(howManyTimes(words, 'osote'));
