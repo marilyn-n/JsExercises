@@ -100,4 +100,19 @@ const weaponsArray = [
 
 // ITERATION 2
 
+const selectRandom = (array) => {
+  const randomNumber = Math.floor(Math.random() * array.length);
+  return array[randomNumber]
+}
+// console.log(selectRandom(weaponsArray));
+
+const pickMystery = () => selectRandom(suspectsArray);
+
 // ITERATION 3
+
+const revealMystery = (obj) => {
+  return `${obj.firstName} ${obj.lastName} killed Mr. Boddy using the 
+    ${selectRandom(weaponsArray).name} in the ${selectRandom(roomsArray).name}`;
+}
+
+console.log(revealMystery(pickMystery()));
