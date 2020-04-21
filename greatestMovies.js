@@ -85,8 +85,34 @@ const turnHoursToMinutes = (allMovies) => {
 
 
 // BONUS - Iteration 8: Best yearly rate average - Best yearly rate average
-const bestYearAvg = (allMovies) => { 
- 
+const average = (moviesArray) => moviesArray.reduce((a, b) => a + b , 0)/ moviesArray.length;
+
+const ratingsByYear =  (year, movieArray) => {
+  return movieArray.filter((movie) => movie.year === year)
+    .map(movie => movie.rate)
 }
 
-console.log(bestYearAvg(movies));
+myYear = '1994'
+console.log({'1994': ratingsByYear(myYear, movies)});
+
+const yearsMapper = (moviesArray) => {
+  return moviesArray.map(movie => {
+    const res = { year: `${movie.year}`, ratings : ratingsByYear(movie.year, moviesArray) }
+    return res;
+  })
+}
+
+
+const yearsAvg = (movieArray) => { 
+
+  const res = yearsMapper(movieArray).map(item => {
+   const obj =  { 
+      year: `${item.year}`, yearAverage : average(item.ratings)   
+    }
+    return obj;
+  })
+
+return res
+}
+
+console.log(yearsAvg(movies));
