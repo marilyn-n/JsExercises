@@ -16,7 +16,7 @@ const getAllDirectors = (allMovies) => {
   return `${uniqueDirectors.length} directors`
 };
 
-console.log(getAllDirectors(movies));
+// console.log(getAllDirectors(movies));
 
 
 // Iteration 2: Steven Spielberg. The best? - How many drama movies did STEVEN SPIELBERG direct?
@@ -25,7 +25,7 @@ const howManyMovies = (allMovies) => {
   console.log(`Steven Spielberg has directed ${filteredMovies.length} drama movies!`);
 }
 
-console.log(howManyMovies(movies));
+// console.log(howManyMovies(movies));
 
 
 // Iteration 3: All rates average - Get the average of all rates with 2 decimals
@@ -35,7 +35,7 @@ const ratesAverage = (allMovies) => {
   const ratesAverage = rates.reduce((a, b) => a + b / rates.length, 0);
   return `The rating average of all movies is ${ratesAverage.toFixed(2)}`
 }
-console.log(ratesAverage(movies));
+// console.log(ratesAverage(movies));
 
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
@@ -47,7 +47,7 @@ const dramaMoviesRate = (allMovies) => {
   return `Drama movies rating average is ${ratingAverage.toFixed(2)}`
 }
 
-console.log(dramaMoviesRate(movies));
+// console.log(dramaMoviesRate(movies));
 
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
@@ -61,14 +61,32 @@ const orderAlphabetically = (allMovies) => {
   return alphabeticalTitles
 }
 
-console.log(orderAlphabetically(movies));
+// console.log(orderAlphabetically(movies));
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 const turnHoursToMinutes = (allMovies) => {
+  const duration = allMovies.map(movie => {
+    let srt = movie.duration.split(' ');
+
+    const hrs = srt[0].slice(0,1);
+    const mins = srt[1];
+
+    mins === undefined ? '' : movie.duration = `${(hrs * 60) + parseInt(mins.slice(0, -3)) } mins`;
+    
+    return  movie;
+    
+  });
+
+  return duration
   
 }
 
-console.log(turnHoursToMinutes(movies));
+// console.log(turnHoursToMinutes(movies));
 
 
 // BONUS - Iteration 8: Best yearly rate average - Best yearly rate average
+const bestYearAvg = (allMovies) => { 
+ 
+}
+
+console.log(bestYearAvg(movies));
