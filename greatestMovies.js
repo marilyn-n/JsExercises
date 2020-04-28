@@ -92,9 +92,6 @@ const ratingsByYear =  (year, movieArray) => {
     .map(movie => movie.rate)
 }
 
-myYear = '1994'
-console.log({'1994': ratingsByYear(myYear, movies)});
-
 const yearsMapper = (moviesArray) => {
   return moviesArray.map(movie => {
     const res = { year: `${movie.year}`, ratings : ratingsByYear(movie.year, moviesArray) }
@@ -102,17 +99,27 @@ const yearsMapper = (moviesArray) => {
   })
 }
 
+const moviesAvg = (movieArray) => { 
+const uniqueArr = [];
+const years = [];
 
-const yearsAvg = (movieArray) => { 
-
-  const res = yearsMapper(movieArray).map(item => {
-   const obj =  { 
-      year: `${item.year}`, yearAverage : average(item.ratings)   
+  yearsMapper(movieArray).map(item => {
+    if (!years.includes(item.year)) {
+      years.push(item.year)
+      uniqueArr.push({ 
+        year: `${item.year}`, ratesAverage : Number(average(item.ratings).toFixed(2))
+      })
     }
-    return obj;
   })
-
-return res
+    
+  return uniqueArr
+  
 }
 
-console.log(yearsAvg(movies));
+const winnerMovie = (moviesArr) => {
+  const maxRate = moviesArr.reduce((prev, curr) => (prev.ratesAverage > curr.ratesAverage) ? prev : curr);
+  return `The best year was ${maxRate.year} with a yearly rate average of ${maxRate.ratesAverage} !!`
+}
+
+console.log(winnerMovie(moviesAvg(movies)));
+
